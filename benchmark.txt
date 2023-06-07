@@ -1,0 +1,7 @@
+goos: linux
+goarch: arm64
+pkg: github.com/agopankov/benchmark
+BenchmarkMain-4   	 6667237	       180.5 ns/op
+PASS
+ok  	github.com/agopankov/benchmark	1.391s
+?   	github.com/agopankov/benchmark/cmd/benchmark	[no test files]
