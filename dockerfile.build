@@ -1,0 +1,15 @@
+# Dockerfile.client
+
+FROM golang:1.20.3-alpine3.17 AS build
+WORKDIR /app
+
+COPY go.mod ./
+COPY . .
+RUN go build -o impulse-client ./client/cmd/imPulse-client && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /tmp/*
+
+FROM --platform=linux/arm64 alpine:3.17
+COPY --from=build /app/impulse-client /bin/impulse-client
+
+CMD ["impulse-client"]
